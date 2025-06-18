@@ -37,3 +37,5 @@ charset_normalizer
 # Optional but helpful
 slowapi
 python-stdnum
+zeep>=4.1.0
+
