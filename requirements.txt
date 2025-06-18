@@ -13,3 +13,4 @@ psutil
 html2text
 python-dateutil
 requests
+polib>=1.1.0
