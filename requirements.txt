@@ -1,11 +1,10 @@
-# Core
-lxml[html_clean
+# Core dependencies
 babel>=2.6.0
 decorator>=4.0.10
 docutils>=0.16
 ebaysdk
 Jinja2>=3.0.0
-lxml>=4.5.0
+lxml[html_clean]>=4.5.0
 MarkupSafe>=2.0.0
 num2words
 ofxparse
@@ -34,5 +33,7 @@ urllib3
 six
 certifi
 charset_normalizer
+
+# Optional but helpful
 slowapi
 python-stdnum
