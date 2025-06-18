@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# Default values – adjust if needed
-ODOO_DIR=odoo
-ADDONS_PATH=odoo/addons,custom_addons
-DB_HOST=$DB_HOST
-DB_NAME=$DB_NAME
-DB_USER=$DB_USER
-DB_PASSWORD=$DB_PASSWORD
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-# Run Odoo
-python3 $ODOO_DIR/odoo-bin \
-  --addons-path=$ADDONS_PATH \
-  --db_host=$DB_HOST \
-  --db_user=$DB_USER \
-  --db_password=$DB_PASSWORD \
-  --db_name=$DB_NAME \
-  --log-level=info \
+# Optional: print each command for debugging
+set -x
+
+# Start Odoo with configuration
+python3 odoo-bin \
+  --addons-path=odoo/addons \
+  --db_host=${DB_HOST:-localhost} \
+  --db_port=${DB_PORT:-5432} \
+  --db_user=${DB_USER:-odoo} \
+  --db_password=${DB_PASSWORD:-odoo} \
+  --db_name=${DB_NAME:-odoo} \
   --http-port=10000 \
-  --limit-time-real=600 \
-  --limit-memory-soft=268435456 \
-  --limit-memory-hard=536870912
+  --log-level=info \
+  --workers=2 \
+  --max-cron-threads=1 \
+  --limit-time-real=120 \
+  --limit-time-cpu=60
